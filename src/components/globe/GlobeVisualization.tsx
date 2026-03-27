@@ -15,10 +15,10 @@ const GEOJSON_URL =
   'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson';
 
 const GLOBE_MATERIAL = {
-  color: '#020508',
-  emissive: '#020508',
-  emissiveIntensity: 0.1,
-  shininess: 0.1,
+  color: '#030b14',
+  emissive: '#030b14',
+  emissiveIntensity: 0.05,
+  shininess: 8,
   opacity: 1,
   transparent: false,
 };
@@ -124,10 +124,10 @@ export function GlobeVisualization({
   );
 
   return (
-    <div className="fixed inset-0 bg-[#020508] globe-container">
+    <div className="fixed inset-0 globe-container" style={{ background: '#000000' }}>
       <Globe
         ref={globeEl}
-        backgroundColor="rgba(0,0,0,0)"
+        backgroundColor="#000000"
         globeMaterial={GLOBE_MATERIAL}
         atmosphereColor="rgba(192,106,16,0.25)"
         atmosphereAltitude={0.15}

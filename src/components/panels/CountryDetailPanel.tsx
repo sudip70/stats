@@ -42,144 +42,149 @@ export function CountryDetailPanel({ selected, year, onClose }: Props) {
     .map((h) => ({ year: h.year, share: parseFloat(h.share.toFixed(4)) }));
 
   return (
-    <motion.div
-      initial={{ x: 300, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 300, opacity: 0 }}
-      transition={{ type: 'spring', damping: 28, stiffness: 280 }}
+    // Outer div owns the fixed centering — untouched by framer-motion
+    <div
       style={{
         position: 'fixed',
         right: '20px',
-        top: '44%',
+        top: '50%',
         transform: 'translateY(-50%)',
         zIndex: 20,
       }}
     >
-      <PanelShell
-        style={{
-          width: '220px',
-          maxHeight: 'calc(100vh - 160px)',
-          overflowY: 'auto',
-          background: 'rgba(6,12,20,0.92)',
-          position: 'relative',
-        }}
+      {/* Inner motion element owns only the slide-in animation */}
+      <motion.div
+        initial={{ x: 300, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: 300, opacity: 0 }}
+        transition={{ type: 'spring', damping: 28, stiffness: 280 }}
       >
-        {/* Close button */}
-        <button
-          onClick={onClose}
+        <PanelShell
           style={{
-            position: 'absolute',
-            top: '12px',
-            right: '12px',
-            background: 'rgba(255,255,255,0.05)',
-            border: '1px solid rgba(255,255,255,0.1)',
-            borderRadius: '6px',
-            color: 'rgba(226,232,240,0.55)',
-            width: '24px',
-            height: '24px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            fontSize: '12px',
-            transition: 'background 0.15s',
+            width: '220px',
+            maxHeight: 'calc(100vh - 160px)',
+            overflowY: 'auto',
+            background: 'rgba(6,12,20,0.92)',
+            position: 'relative',
           }}
         >
-          ✕
-        </button>
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            style={{
+              position: 'absolute',
+              top: '12px',
+              right: '12px',
+              background: 'rgba(255,255,255,0.05)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '6px',
+              color: 'rgba(226,232,240,0.55)',
+              width: '24px',
+              height: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              fontSize: '12px',
+              transition: 'background 0.15s',
+            }}
+          >
+            ✕
+          </button>
 
-        {/* Country name */}
-        <div
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '18px',
-            fontWeight: 700,
-            color: '#4ade80',
-            lineHeight: 1.2,
-            marginBottom: '3px',
-            paddingRight: '28px',
-          }}
-        >
-          {selected.entity}
-        </div>
-
-        {/* ISO code */}
-        <div
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '9px',
-            letterSpacing: '2px',
-            color: 'rgba(226,232,240,0.55)',
-            marginBottom: '16px',
-          }}
-        >
-          {selected.code}
-        </div>
-
-        <div style={{ marginBottom: '14px' }}>
-          <SectionDivider />
-        </div>
-
-        {/* Forest share */}
-        <div style={{ marginBottom: '10px' }}>
-          <div style={{ marginBottom: '4px' }}>
-            <PanelLabel>Forest Share {year}</PanelLabel>
-          </div>
+          {/* Country name */}
           <div
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '22px',
+              fontSize: '18px',
               fontWeight: 700,
-              color: '#e2e8f0',
-              lineHeight: 1,
+              color: '#4ade80',
+              lineHeight: 1.2,
+              marginBottom: '3px',
+              paddingRight: '28px',
             }}
           >
-            {currentShare != null ? `${currentShare.toFixed(3)}%` : '—'}
+            {selected.entity}
           </div>
+
+          {/* ISO code */}
           <div
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: '9px',
+              letterSpacing: '2px',
               color: 'rgba(226,232,240,0.55)',
-              marginTop: '2px',
+              marginBottom: '16px',
             }}
           >
-            of global forests
+            {selected.code}
           </div>
-        </div>
 
-        {/* Change since 1990 */}
-        <div style={{ marginBottom: '16px' }}>
-          <div style={{ marginBottom: '4px' }}>
-            <PanelLabel>Change Since 1990</PanelLabel>
+          <div style={{ marginBottom: '14px' }}>
+            <SectionDivider />
           </div>
-          <div
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '22px',
-              fontWeight: 700,
-              color: changeColor,
-              lineHeight: 1,
-            }}
-          >
-            {changeStr}
-          </div>
-        </div>
 
-        <div style={{ marginBottom: '12px' }}>
-          <SectionDivider />
-        </div>
-
-        {/* Historical chart */}
-        {chartData.length > 1 && (
-          <>
-            <div style={{ marginBottom: '8px' }}>
-              <PanelLabel>Historical Trend</PanelLabel>
+          {/* Forest share */}
+          <div style={{ marginBottom: '10px' }}>
+            <div style={{ marginBottom: '4px' }}>
+              <PanelLabel>Forest Share {year}</PanelLabel>
             </div>
-            <HistoryChart data={chartData} currentYear={year} />
-          </>
-        )}
-      </PanelShell>
-    </motion.div>
+            <div
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '22px',
+                fontWeight: 700,
+                color: '#e2e8f0',
+                lineHeight: 1,
+              }}
+            >
+              {currentShare != null ? `${currentShare.toFixed(3)}%` : '—'}
+            </div>
+            <div
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '9px',
+                color: 'rgba(226,232,240,0.55)',
+                marginTop: '2px',
+              }}
+            >
+              of global forests
+            </div>
+          </div>
+
+          {/* Change since 1990 */}
+          <div style={{ marginBottom: '16px' }}>
+            <div style={{ marginBottom: '4px' }}>
+              <PanelLabel>Change Since 1990</PanelLabel>
+            </div>
+            <div
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '22px',
+                fontWeight: 700,
+                color: changeColor,
+                lineHeight: 1,
+              }}
+            >
+              {changeStr}
+            </div>
+          </div>
+
+          <div style={{ marginBottom: '12px' }}>
+            <SectionDivider />
+          </div>
+
+          {/* Historical chart */}
+          {chartData.length > 1 && (
+            <>
+              <div style={{ marginBottom: '8px' }}>
+                <PanelLabel>Historical Trend</PanelLabel>
+              </div>
+              <HistoryChart data={chartData} currentYear={year} />
+            </>
+          )}
+        </PanelShell>
+      </motion.div>
+    </div>
   );
 }

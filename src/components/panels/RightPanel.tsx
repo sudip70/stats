@@ -4,11 +4,12 @@ import { PanelLabel } from '../ui/PanelLabel';
 import { SectionDivider } from '../ui/SectionDivider';
 
 const LEGEND_ITEMS = [
-  { color: '#064e3b', name: 'Strong Gain',    range: '> +10%'   },
-  { color: '#16a34a', name: 'Gaining',         range: '0 – +10%' },
-  { color: '#22c55e', name: 'Stable',          range: '±2%'      },
-  { color: '#b45309', name: 'Moderate Loss',   range: '-10 – 0%' },
-  { color: '#991b1b', name: 'Critical Loss',   range: '< -25%'   },
+  { color: '#059669', name: 'Strong Gain',     range: '> +10%'    },
+  { color: '#16a34a', name: 'Gaining',          range: '0 – +10%'  },
+  { color: '#22c55e', name: 'Stable',           range: '±2%'       },
+  { color: '#f59e0b', name: 'Moderate Loss',    range: '-10 – 0%'  },
+  { color: '#ea580c', name: 'Significant Loss', range: '-10 – -25%'},
+  { color: '#dc2626', name: 'Critical Loss',    range: '< -25%'    },
 ] as const;
 
 function LegendItem({ color, name, range }: { color: string; name: string; range: string }) {
@@ -53,33 +54,38 @@ function LegendItem({ color, name, range }: { color: string; name: string; range
 
 export function RightPanel() {
   return (
-    <motion.aside
-      initial={{ x: 20, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 20, opacity: 0 }}
-      transition={{ delay: 0.5 }}
+    // Outer div owns the fixed centering — untouched by framer-motion
+    <div
       style={{
         position: 'fixed',
         right: '20px',
-        top: '44%',
+        top: '50%',
         transform: 'translateY(-50%)',
         zIndex: 20,
       }}
     >
-      <PanelShell style={{ width: '172px' }}>
-        <div style={{ marginBottom: '18px' }}>
-          <PanelLabel>Forest Change Index</PanelLabel>
-          <div style={{ marginTop: '8px' }}>
-            <SectionDivider gradient />
+      {/* Inner motion element owns only the slide-in animation */}
+      <motion.aside
+        initial={{ x: 20, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: 20, opacity: 0 }}
+        transition={{ delay: 0.5 }}
+      >
+        <PanelShell style={{ width: '172px' }}>
+          <div style={{ marginBottom: '18px' }}>
+            <PanelLabel>Forest Change Index</PanelLabel>
+            <div style={{ marginTop: '8px' }}>
+              <SectionDivider gradient />
+            </div>
           </div>
-        </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '13px' }}>
-          {LEGEND_ITEMS.map((item) => (
-            <LegendItem key={item.name} {...item} />
-          ))}
-        </div>
-      </PanelShell>
-    </motion.aside>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '13px' }}>
+            {LEGEND_ITEMS.map((item) => (
+              <LegendItem key={item.name} {...item} />
+            ))}
+          </div>
+        </PanelShell>
+      </motion.aside>
+    </div>
   );
 }

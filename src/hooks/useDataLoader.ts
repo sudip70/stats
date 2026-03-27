@@ -12,7 +12,7 @@ export function useDataLoader() {
       try {
         setLoading(true);
 
-        const response = await fetch('/share-global-forest.csv');
+        const response = await fetch(`${import.meta.env.BASE_URL}share-global-forest.csv`);
         if (!response.ok) {
           throw new Error(`Failed to fetch CSV: ${response.statusText}`);
         }

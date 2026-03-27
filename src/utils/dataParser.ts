@@ -32,15 +32,15 @@ export function getCountryColor(
   isSelected: boolean
 ): string {
   if (isSelected) return 'rgba(255,255,255,0.95)';
-  if (!data) return 'rgba(26,42,28,0.4)';
+  if (!data) return 'rgba(30,58,38,0.55)';       // slate-ish dark green
 
   const rc = data.relativeChange;
-  if (rc > 10) return 'rgba(6,78,59,0.85)';
-  if (rc > 2) return 'rgba(21,128,61,0.85)';
-  if (rc > -2) return 'rgba(22,163,74,0.8)';
-  if (rc > -10) return 'rgba(180,83,9,0.85)';
-  if (rc > -25) return 'rgba(194,65,12,0.85)';
-  return 'rgba(153,27,27,0.85)';
+  if (rc > 10)  return 'rgba(5,150,105,0.88)';   // emerald-600
+  if (rc > 2)   return 'rgba(22,163,74,0.88)';   // green-600
+  if (rc > -2)  return 'rgba(34,197,94,0.82)';   // green-500
+  if (rc > -10) return 'rgba(245,158,11,0.85)';  // amber-500
+  if (rc > -25) return 'rgba(234,88,12,0.85)';   // orange-600
+  return 'rgba(220,38,38,0.85)';                  // red-600
 }
 
 /**

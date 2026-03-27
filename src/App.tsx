@@ -117,7 +117,7 @@ export default function App() {
   }
 
   return (
-    <div className="relative w-full h-screen overflow-hidden" style={{ background: '#020508' }}>
+    <div className="relative w-full h-screen overflow-hidden" style={{ background: '#000000' }}>
       <div className="absolute inset-0 pointer-events-none" style={{ ...VIGNETTE_STYLE, zIndex: 2 }} />
 
       <GlobeVisualization
