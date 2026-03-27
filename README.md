@@ -32,3 +32,19 @@ The application will open at [http://localhost:5173](http://localhost:5173)
 ```bash
 npm run build
 ```
+
+<br/>
+
+## Deployment
+
+The app is configured for [GitHub Pages](https://pages.github.com/) at `https://sudip70.github.io/deforestation/`.
+
+### Deploy to GitHub Pages
+```bash
+npm run deploy
+```
+
+This builds the app and pushes the `dist/` folder to the `gh-pages` branch automatically.
+
+Then enable Pages in your repository:
+**GitHub → Settings → Pages → Source → Deploy from branch → `gh-pages` → `/ (root)`**
