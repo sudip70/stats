@@ -1,125 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Global Deforestation Monitor</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div id="app">
-    <canvas id="globe"></canvas>
-    <div id="vignette"></div>
-
-    <!-- Header -->
-    <header id="header">
-      <div id="brand">
-        <span class="brand-dot"></span>
-        <span class="brand-label">Earth Observatory</span>
-      </div>
-      <div id="yearDisplay">
-        <div class="year-sub">MONITORING YEAR</div>
-        <div id="yearLabel">2000</div>
-      </div>
-      <div id="headerRight">
-        <div class="live-badge"><span class="pulse"></span>LIVE DATA</div>
-      </div>
-    </header>
-
-    <!-- Left Stats -->
-    <aside id="leftPanel">
-      <div class="panel-header">
-        <div class="panel-label">FOREST COVERAGE</div>
-        <div class="panel-line"></div>
-      </div>
-      <div class="stat-block primary">
-        <div class="stat-row">
-          <div class="stat-number" id="coverageVal">31.6</div>
-          <div class="stat-suffix">%</div>
-        </div>
-        <div class="stat-desc">Global Coverage</div>
-        <div class="stat-bar"><div class="stat-bar-fill primary-fill" id="coverageBar" style="width:31.6%"></div></div>
-      </div>
-      <div class="divider"></div>
-      <div class="stat-block danger">
-        <div class="stat-row">
-          <div class="stat-number" id="lossVal">0.0</div>
-          <div class="stat-suffix">M km²</div>
-        </div>
-        <div class="stat-desc">Lost Since 2000</div>
-        <div class="stat-bar"><div class="stat-bar-fill danger-fill" id="lossBar" style="width:0%"></div></div>
-      </div>
-      <div class="divider"></div>
-      <div class="stat-block warn">
-        <div class="stat-row">
-          <div class="stat-number">~200K</div>
-          <div class="stat-suffix">km²</div>
-        </div>
-        <div class="stat-desc">Avg Annual Loss</div>
-      </div>
-    </aside>
-
-    <!-- Right Legend -->
-    <aside id="rightPanel">
-      <div class="panel-header">
-        <div class="panel-label">BIOME INDEX</div>
-        <div class="panel-line"></div>
-      </div>
-      <div class="legend-list">
-        <div class="legend-item">
-          <div class="legend-swatch" style="background:linear-gradient(135deg,#064e3b,#065f46);"></div>
-          <div class="legend-text">
-            <div class="legend-name">Tropical</div>
-            <div class="legend-sub">Equatorial belt</div>
-          </div>
-        </div>
-        <div class="legend-item">
-          <div class="legend-swatch" style="background:linear-gradient(135deg,#15803d,#16a34a);"></div>
-          <div class="legend-text">
-            <div class="legend-name">Boreal</div>
-            <div class="legend-sub">Northern latitudes</div>
-          </div>
-        </div>
-        <div class="legend-item">
-          <div class="legend-swatch" style="background:linear-gradient(135deg,#4ade80,#86efac);"></div>
-          <div class="legend-text">
-            <div class="legend-name">Temperate</div>
-            <div class="legend-sub">Mid latitudes</div>
-          </div>
-        </div>
-        <div class="legend-item">
-          <div class="legend-swatch" style="background:linear-gradient(135deg,#dc2626,#f97316);"></div>
-          <div class="legend-text">
-            <div class="legend-name">Deforested</div>
-            <div class="legend-sub">Active loss zone</div>
-          </div>
-        </div>
-      </div>
-    </aside>
-
-    <!-- Controls -->
-    <div id="controls">
-      <div id="controls-inner">
-        <button id="playBtn">
-          <span id="playIcon">▶</span>
-          <span id="playText">PLAY</span>
-        </button>
-        <div id="sliderWrap">
-          <div id="sliderTrack">
-            <div id="sliderFill"></div>
-            <input type="range" id="slider" min="2000" max="2025" value="2000">
-          </div>
-          <div class="tick-row">
-            <span>2000</span><span>2005</span><span>2010</span><span>2015</span><span>2020</span><span>2025</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Deforestation Monitor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
