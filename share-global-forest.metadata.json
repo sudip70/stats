@@ -1,0 +1,38 @@
+{
+  "chart": {
+    "title": "Share of global forest area",
+    "citation": "Food and Agriculture Organization of the United Nations (2025)",
+    "originalChartUrl": "https://ourworldindata.org/grapher/share-global-forest?v=1&csvType=full&useColumnShortNames=false",
+    "selection": [
+      "Brazil",
+      "India",
+      "China",
+      "United States",
+      "Sweden",
+      "Indonesia",
+      "Australia",
+      "Russia"
+    ]
+  },
+  "columns": {
+    "Share of global forest area": {
+      "titleShort": "Share of global forest area",
+      "titleLong": "Share of global forest area",
+      "descriptionShort": "Share of global forest area represents the proportion of a country's forest area relative to the total global forest area.",
+      "descriptionProcessing": "Annual forest area values are linearly interpolated for missing years, based on available data points from the FAO Forest Resources Assessment (FRA) reports.",
+      "shortUnit": "%",
+      "unit": "%",
+      "timespan": "1990-2025",
+      "type": "Numeric",
+      "owidVariableId": 1129230,
+      "shortName": "forestarea_share_global",
+      "lastUpdated": "2025-12-05",
+      "nextUpdate": "2026-12-05",
+      "citationShort": "Food and Agriculture Organization of the United Nations (2025) – with major processing by Our World in Data",
+      "citationLong": "Food and Agriculture Organization of the United Nations (2025) – with major processing by Our World in Data. “Share of global forest area” [dataset]. Food and Agriculture Organization of the United Nations, “Global Forest Resources Assessment 2025” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/1129230.metadata.json"
+    }
+  },
+  "dateDownloaded": "2026-03-27",
+  "activeFilters": {}
+}
