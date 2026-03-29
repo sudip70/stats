@@ -4,7 +4,7 @@ import { PanelShell } from '../ui/PanelShell';
 import { PanelLabel } from '../ui/PanelLabel';
 import { SectionDivider } from '../ui/SectionDivider';
 import { StatBlock } from '../ui/StatBlock';
-import { getLayerStats } from '../../utils/layerStats.ts';
+import { getLayerStats } from '../../utils/layerStats';
 import { LAYER_MAP } from '../../config/layers';
 import type { ProcessedData, LayerId } from '../../types';
 
