@@ -11,11 +11,9 @@ export function LayerSwitcher({ activeLayer, onChange }: Props) {
     <div
       style={{
         display: 'flex',
-        alignItems: 'center',
-        gap: '6px',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        marginBottom: '14px',
+        flexDirection: 'column',
+        alignItems: 'stretch',
+        gap: '4px',
       }}
     >
       {LAYER_CONFIGS.map((layer) => {
@@ -28,8 +26,8 @@ export function LayerSwitcher({ activeLayer, onChange }: Props) {
               display: 'flex',
               alignItems: 'center',
               gap: '7px',
-              padding: '8px 18px',
-              borderRadius: '24px',
+              padding: '7px 14px',
+              borderRadius: '10px',
               border: active
                 ? '1px solid rgba(34,197,94,0.55)'
                 : '1px solid rgba(255,255,255,0.09)',

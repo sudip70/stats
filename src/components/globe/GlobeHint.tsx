@@ -11,7 +11,7 @@ export function GlobeHint({ visible }: Props) {
           animate={{ opacity: 1, y: 0, x: '-50%' }}
           exit={{ opacity: 0, y: -20, x: '-50%' }}
           transition={{ delay: 1.2 }}
-          style={{ position: 'fixed', top: '120px', left: '50%', zIndex: 30 }}
+          style={{ position: 'fixed', top: '110px', left: '50%', zIndex: 30 }}
           className="pointer-events-none"
         >
           <div style={{

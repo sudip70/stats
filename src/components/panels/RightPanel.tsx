@@ -9,41 +9,11 @@ interface Props {
   activeLayer: LayerId;
 }
 
-function LegendItem({ color, name, range }: { color: string; name: string; range: string }) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '11px' }}>
-      <div
-        style={{
-          width: '26px', height: '26px', borderRadius: '6px', flexShrink: 0,
-          background: color, border: '1px solid rgba(255,255,255,0.08)',
-        }}
-      />
-      <div>
-        <div style={{
-          fontFamily: 'var(--font-display)', fontSize: '11px', fontWeight: 600,
-          color: '#e2e8f0', lineHeight: 1.2,
-        }}>
-          {name}
-        </div>
-        <div style={{
-          fontFamily: 'var(--font-mono)', fontSize: '9px',
-          color: 'rgba(226,232,240,0.55)', marginTop: '1px',
-        }}>
-          {range}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function RightPanel({ activeLayer }: Props) {
   const config = LAYER_MAP.get(activeLayer)!;
 
   return (
-    <div style={{
-      position: 'fixed', right: '20px', top: '50%',
-      transform: 'translateY(-50%)', zIndex: 20,
-    }}>
+    <div>
       <motion.aside
         key={activeLayer}
         initial={{ x: 20, opacity: 0 }}
@@ -52,34 +22,53 @@ export function RightPanel({ activeLayer }: Props) {
         transition={{ duration: 0.25 }}
       >
         <PanelShell style={{ width: '178px' }}>
-          <div style={{ marginBottom: '16px' }}>
+          {/* Title */}
+          <div style={{ marginBottom: '12px' }}>
             <PanelLabel>{config.legendTitle}</PanelLabel>
             <div style={{ marginTop: '8px' }}>
               <SectionDivider gradient />
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
+          {/* Legend items — color + text in same row */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
             {config.legendItems.map((item) => (
-              <LegendItem key={item.name} {...item} />
+              <div key={item.name} style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+                <div style={{
+                  width: '12px', height: '12px', borderRadius: '2px', flexShrink: 0,
+                  background: item.color, border: '1px solid rgba(255,255,255,0.08)',
+                }} />
+                <span style={{
+                  fontFamily: 'var(--font-display)', fontSize: '10px', fontWeight: 600,
+                  color: '#e2e8f0', flex: 1,
+                }}>
+                  {item.name}
+                </span>
+                <span style={{
+                  fontFamily: 'var(--font-mono)', fontSize: '9px',
+                  color: 'rgba(226,232,240,0.45)', whiteSpace: 'nowrap',
+                }}>
+                  {item.range}
+                </span>
+              </div>
             ))}
           </div>
 
           {/* No-data indicator */}
-          <div style={{ marginTop: '14px' }}>
+          <div style={{ marginTop: '12px' }}>
             <SectionDivider />
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '10px' }}>
             <div style={{
-              width: '26px', height: '26px', borderRadius: '6px', flexShrink: 0,
+              width: '12px', height: '12px', borderRadius: '2px', flexShrink: 0,
               background: 'rgba(20,32,42,0.55)', border: '1px solid rgba(255,255,255,0.08)',
             }} />
-            <div style={{
+            <span style={{
               fontFamily: 'var(--font-mono)', fontSize: '9px',
               color: 'rgba(226,232,240,0.4)',
             }}>
               No data
-            </div>
+            </span>
           </div>
         </PanelShell>
       </motion.aside>

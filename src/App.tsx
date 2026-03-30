@@ -7,6 +7,7 @@ import { Header } from './components/Header';
 import { LeftPanel } from './components/panels/LeftPanel';
 import { RightPanel } from './components/panels/RightPanel';
 import { Controls } from './components/controls/Controls';
+import { LayerSwitcher } from './components/controls/LayerSwitcher';
 import { CountryDetailPanel } from './components/panels/CountryDetailPanel';
 import { ErrorOverlay } from './components/ErrorOverlay';
 import type { SelectedCountry, LayerId } from './types';
@@ -44,6 +45,7 @@ export default function App() {
   const [activeLayer, setActiveLayer] = useState<LayerId>('population');
   const [year, setYear] = useState(2025);
   const [playing, setPlaying] = useState(false);
+  const [playSpeed, setPlaySpeed] = useState(1);
   const [selectedCode, setSelectedCode] = useState<string | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -83,12 +85,12 @@ export default function App() {
           if (y >= maxYear) { setPlaying(false); return y; }
           return y + 1;
         });
-      }, 700);
+      }, Math.round(700 / playSpeed));
     } else {
       if (intervalRef.current) { clearInterval(intervalRef.current); intervalRef.current = null; }
     }
     return () => { if (intervalRef.current) { clearInterval(intervalRef.current); intervalRef.current = null; } };
-  }, [playing, maxYear]);
+  }, [playing, maxYear, playSpeed]);
 
   useEffect(() => {
     if (year >= maxYear && playing) setPlaying(false);
@@ -139,32 +141,56 @@ export default function App() {
 
       <Header year={year} />
 
-      <LeftPanel activeLayer={activeLayer} data={data} year={year} />
+      {/* Left center: layer category switcher */}
+      <div style={{
+        position: 'fixed',
+        left: '24px',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        zIndex: 20,
+      }}>
+        <LayerSwitcher activeLayer={activeLayer} onChange={handleLayerChange} />
+      </div>
 
-      <AnimatePresence mode="wait">
-        {selectedCountry && data ? (
-          <CountryDetailPanel
-            key="detail"
-            selected={selectedCountry}
-            data={data}
-            activeLayer={activeLayer}
-            year={year}
-            onClose={() => setSelectedCode(null)}
-          />
-        ) : (
-          <RightPanel key={`legend-${activeLayer}`} activeLayer={activeLayer} />
-        )}
-      </AnimatePresence>
+      {/* Right-middle: stats panel + legend/detail stacked */}
+      <div style={{
+        position: 'fixed',
+        top: '50%',
+        right: '24px',
+        transform: 'translateY(-50%)',
+        zIndex: 20,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-end',
+        gap: '12px',
+      }}>
+        <LeftPanel activeLayer={activeLayer} data={data} year={year} />
+
+        <AnimatePresence mode="wait">
+          {selectedCountry && data ? (
+            <CountryDetailPanel
+              key="detail"
+              selected={selectedCountry}
+              data={data}
+              activeLayer={activeLayer}
+              year={year}
+              onClose={() => setSelectedCode(null)}
+            />
+          ) : (
+            <RightPanel key={`legend-${activeLayer}`} activeLayer={activeLayer} />
+          )}
+        </AnimatePresence>
+      </div>
 
       <Controls
         year={year}
         minYear={minYear}
         maxYear={maxYear}
         playing={playing}
-        activeLayer={activeLayer}
+        playSpeed={playSpeed}
         onYearChange={setYear}
         onPlayToggle={togglePlay}
-        onLayerChange={handleLayerChange}
+        onSpeedChange={setPlaySpeed}
       />
 
       {loading && <LoadingOverlay />}

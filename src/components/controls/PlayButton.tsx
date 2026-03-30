@@ -12,13 +12,15 @@ export function PlayButton({ playing, onClick }: Props) {
       style={{
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         gap: '7px',
+        width: '108px',
         background: playing ? 'rgba(248,113,113,0.1)' : 'rgba(34,197,94,0.12)',
         border: playing
           ? '1px solid rgba(248,113,113,0.4)'
           : '1px solid rgba(34,197,94,0.4)',
         color: playing ? '#f87171' : '#22c55e',
-        padding: '9px 20px',
+        padding: '9px 0',
         borderRadius: '24px',
         cursor: 'pointer',
         fontFamily: 'var(--font-mono)',
@@ -26,7 +28,7 @@ export function PlayButton({ playing, onClick }: Props) {
         letterSpacing: '2px',
         whiteSpace: 'nowrap',
         flexShrink: 0,
-        transition: 'background 0.2s, border-color 0.2s',
+        transition: 'background 0.2s, border-color 0.2s, color 0.2s',
       }}
     >
       {playing ? <FiPause size={12} /> : <FiPlay size={12} />}

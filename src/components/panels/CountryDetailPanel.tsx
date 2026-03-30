@@ -55,10 +55,7 @@ export function CountryDetailPanel({ selected, data, activeLayer, year, onClose 
     : `${changePct.toFixed(1)}%`;
 
   return (
-    <div style={{
-      position: 'fixed', right: '20px', top: '50%',
-      transform: 'translateY(-50%)', zIndex: 20,
-    }}>
+    <div>
       <motion.div
         initial={{ x: 300, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}

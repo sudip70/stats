@@ -23,15 +23,12 @@ export function LeftPanel({ activeLayer, data, year }: Props) {
   }, [activeLayer, data, year]);
 
   return (
-    <div style={{
-      position: 'fixed', left: '20px', top: '50%',
-      transform: 'translateY(-50%)', zIndex: 20,
-    }}>
+    <div>
       <motion.aside
         key={activeLayer}
-        initial={{ x: -20, opacity: 0 }}
+        initial={{ x: 20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        exit={{ x: -20, opacity: 0 }}
+        exit={{ x: 20, opacity: 0 }}
         transition={{ duration: 0.25 }}
       >
         <PanelShell style={{ width: '172px' }}>

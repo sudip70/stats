@@ -70,9 +70,9 @@ export const LAYER_CONFIGS: LayerConfig[] = [
     formatValue: (v) => `${v.toFixed(3)}%`,
     legendItems: [
       { color: '#059669', name: 'Strong Gain',     range: '> +10%' },
-      { color: '#16a34a', name: 'Gaining',          range: '0 – +10%' },
+      { color: '#16a34a', name: 'Gaining',          range: '+2 – +10%' },
       { color: '#22c55e', name: 'Stable',           range: '±2%' },
-      { color: '#f59e0b', name: 'Moderate Loss',    range: '-10 – 0%' },
+      { color: '#f59e0b', name: 'Moderate Loss',    range: '-2 – -10%' },
       { color: '#ea580c', name: 'Significant Loss', range: '-10 – -25%' },
       { color: '#dc2626', name: 'Critical Loss',    range: '< -25%' },
     ],

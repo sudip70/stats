@@ -63,7 +63,7 @@ export function getCountryColor(
     }
     case 'co2': {
       // lower = better → green → red
-      if (cv < 0.05) return 'rgba(22,163,74,0.85)';
+      if (cv < 0.05) return 'rgba(34,197,94,0.85)';
       if (cv < 0.15) return 'rgba(132,204,22,0.85)';
       if (cv < 0.35) return 'rgba(234,179,8,0.85)';
       if (cv < 0.75) return 'rgba(249,115,22,0.85)';
@@ -71,8 +71,8 @@ export function getCountryColor(
     }
     case 'energy': {
       // blue palette by consumption
-      if (cv < 0.025) return 'rgba(186,230,253,0.75)';
-      if (cv < 0.1)   return 'rgba(56,189,248,0.82)';
+      if (cv < 0.025) return 'rgba(186,230,253,0.85)';
+      if (cv < 0.1)   return 'rgba(56,189,248,0.85)';
       if (cv < 0.25)  return 'rgba(2,132,199,0.88)';
       if (cv < 0.75)  return 'rgba(29,78,216,0.88)';
       return 'rgba(79,70,229,0.9)';
@@ -88,10 +88,12 @@ export function getCountryColor(
     }
     case 'population': {
       // light mint → teal → dark navy (OWID style choropleth)
-      if (cv < 0.2)  return 'rgba(213,241,228,0.80)';
-      if (cv < 0.4)  return 'rgba(132,210,188,0.84)';
-      if (cv < 0.6)  return 'rgba(62,171,173,0.88)';
-      if (cv < 0.8)  return 'rgba(30,115,161,0.90)';
+      // thresholds match legend: < 10M, 10–30M, 30–100M, 100–300M, > 300M
+      // cv = log10(pop) / log10(1.5e9); breakpoints: 10M→0.763, 30M→0.815, 100M→0.872, 300M→0.924
+      if (cv < 0.763) return 'rgba(213,241,228,0.80)';
+      if (cv < 0.815) return 'rgba(132,210,188,0.84)';
+      if (cv < 0.872) return 'rgba(62,171,173,0.88)';
+      if (cv < 0.924) return 'rgba(30,115,161,0.90)';
       return 'rgba(10,51,107,0.93)';
     }
     default:

@@ -78,7 +78,7 @@ export function Header({ year }: Props) {
         <div
           style={{
             fontFamily: 'var(--font-display)',
-            fontSize: '72px',
+            fontSize: '64px',
             fontWeight: 700,
             lineHeight: 1,
             letterSpacing: '-2px',
