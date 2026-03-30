@@ -1,6 +1,13 @@
-# Global Deforestation Monitor
+# Global Stats Monitor
 
-An interactive 3D globe dashboard visualizing global forest coverage trends across countries from 1990 to 2025, inspired by [Pudding.cool](https://pudding.cool)'s storytelling approach.
+An interactive 3D globe dashboard visualizing various dataset obtained from [Our World in Data](https://ourworldindata.org/search) trends across countries, inspired by [Pudding.cool](https://pudding.cool)'s storytelling approach.
+
+<br/>
+
+<div align="center" style="flex-direction: column;">
+  <img src="./assets/demo.gif" alt="App Demo" width="100%"/>
+  <div style="font-size: 0.8em; color: gray;">Home Screen</div> 
+</div> 
 
 <br/>
 
@@ -16,19 +23,19 @@ The dashboard visualizes data from the [Food and Agriculture Organization of the
 
 ## Getting Started
 
-### Installation
+#### Installation
 ```bash
 npm install
 ```
 
-### Development
+#### Development
 ```bash
 npm run dev
 ```
 
 The application will open at [http://localhost:5173](http://localhost:5173)
 
-### Build
+#### Build
 ```bash
 npm run build
 ```
@@ -39,12 +46,7 @@ npm run build
 
 The app is configured for [GitHub Pages](https://pages.github.com/) at `https://sudip70.github.io/deforestation/`.
 
-### Deploy to GitHub Pages
 ```bash
 npm run deploy
 ```
 
-This builds the app and pushes the `dist/` folder to the `gh-pages` branch automatically.
-
-Then enable Pages in your repository:
-**GitHub → Settings → Pages → Source → Deploy from branch → `gh-pages` → `/ (root)`**
