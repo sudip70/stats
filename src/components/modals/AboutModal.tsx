@@ -30,7 +30,7 @@ const DEVELOPERS: Developer[] = [
   {
     name: 'Sudip Shrestha',
     role: 'Data Analyst & AI Engineer',
-    bio: 'I am a data enthusiast with a background in engineering and a passion for transforming complex datasets into compelling visual stories. I am learning and building ML models.',
+    bio: 'I am a data enthusiast with a background in software engineering and a passion for transforming complex datasets into compelling visual stories. I am learning and building ML models.',
     accentColor: '#38bdf8',
     links: {
       github: 'https://github.com/sudip70',
